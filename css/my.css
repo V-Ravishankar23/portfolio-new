@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  font: normal 75% Arial, Helvetica, sans-serif;
+}
+
+canvas {
+  position: fixed;
+  top:0;
+  left:0;
+  display: block;
+  vertical-align: bottom;
+}
+
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+
+.main-content {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+
+.main-nav {
+  padding: 20px;
+}
+
+.logo {
+  max-width: 15vw;
+  padding-right: 20px;
+}
+
+.nav-link-box {
+  height:100%;
+}
+
+.nav-item {
+  display: flex;
+  width: auto;
+  margin: 5px 15px 3px 5px;
+  font-size: 1.3em;
+  color: #666666;
+}
+
+.link:hover {
+  color: #2993FC;
+  cursor: pointer;
+}
+
+.link{
+  position: relative;
+  padding-top:8px;
+}
+
+p.link {
+  margin-bottom: 0px !important;
+}
+
+.link:after{
+  content: '';
+  position: absolute;
+  width: 0; height: 2px;
+  display: block;
+  margin-top: 3px;
+  right: 0;
+  background: #2993FC;
+  transition: width .2s ease;
+  -webkit-transition: width .2s ease;
+}
+
+.link:hover:after{
+  width: 100%;
+  left: 0;
+  background: #2993FC;
+}
+
+@media screen and (min-width: 715px){
+  .main-nav {
+    padding-left: 50px;
+    padding-top: 50px;
+  }
+  .nav-item {
+    font-size: 2em;
+    margin: 15px 40px 15px 15px;
+
+  }
+  .link:after{
+    height: 3px;
+    margin-top: 5px;
+  }
+}
+
+.portfolio-tile {
+  width: 90vw;
+  max-width: 250px;
+  height: 400px;
+  max-height: 400px;
+  padding: 5px;
+  border-radius: 20px;
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.tile-title {
+  margin-bottom: 20px;
+}
