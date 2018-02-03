@@ -58,25 +58,19 @@
           </div>
         </div>
         <div id="portfolio-box" class="d-flex flex-wrap justify-content-center">
-          <a href="#">
-            <div id="roi-calc" class="portfolio-tile text-center d-flex flex-column align-items-center justify-content-center" style="background: url('img/roi-calc-bg.png') no-repeat center center local;">
-              <div class="portfolio-tile-cover">
-                <h4 class="tile-title">Cloud Elements ROI Calculator</h4>
-                <h4 class="tile-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></h4>
-              </div>
-            </div>
-          </a>
-
-
           <script id="portfolio-tile" type="text/x-handlebars-template">
-            <a href="'{{link}}'">
+
               <div id={{id}} class="portfolio-tile text-center d-flex flex-column align-items-center justify-content-center" style="background: url('{{mainImg}}') no-repeat center center local;">
-                <div class="portfolio-tile-cover">
-                  <h4 class="tile-title">{{title}}</h4>
-                  <h4 class="tile-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></h4>
-                </div>
+                <a href="{{link}}">
+                  <div class="portfolio-tile-cover d-flex align-items-center justify-content-center">
+                    <div class="tile-text-wrapper">
+                      <h4 class="tile-title">{{title}}</h4>
+                      <h4 class="tile-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></h4>
+                    </div>
+                  </div>
+                </a>
               </div>
-            </a>
+
           </script>
         </div>
 

@@ -28,3 +28,7 @@ function populatePortfolioAll(portfolio, template){
   populatePortfolio(portfolio, 'graphic', template);
   populatePortfolio(portfolio, 'writing', template);
 }
+
+function clearPortfolio(){
+  $("#portfolio-box").html("");
+}
