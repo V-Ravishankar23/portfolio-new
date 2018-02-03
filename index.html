@@ -34,24 +34,24 @@
           </div>
           <div class="nav-link-box d-flex flex-column">
             <div class="nav-item">
-              <p class="link">
+              <p id="all-button" class="link inactive" data="all">
                 All Projects
               </p>
             </div>
             <div class="nav-item">
-              <p class="link">
+              <p id="graphic-button" class="link inactive" data="graphic">
                 Graphic
               </p>
             </div>
           </div>
           <div class="nav-link-box d-flex flex-column">
             <div class="nav-item">
-              <p class="link">
+              <p id="web-button" class="link inactive" data="web">
                 Web
               </p>
             </div>
             <div class="nav-item">
-              <p class="link">
+              <p id="writing-button" class="link inactive" data="writing">
                 Writing
               </p>
             </div>
@@ -61,11 +61,11 @@
           <script id="portfolio-tile" type="text/x-handlebars-template">
 
               <div id={{id}} class="portfolio-tile text-center d-flex flex-column align-items-center justify-content-center" style="background: url('{{mainImg}}') no-repeat center center local;">
-                <a href="{{link}}">
+                <a href="{{link}}" target="_blank">
                   <div class="portfolio-tile-cover d-flex align-items-center justify-content-center">
                     <div class="tile-text-wrapper">
                       <h4 class="tile-title">{{title}}</h4>
-                      <h4 class="tile-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></h4>
+                      <h4 class="tile-plus"><i class="fa fa-2x fa-plus-circle" aria-hidden="true"></i></h4>
                     </div>
                   </div>
                 </a>
@@ -92,7 +92,6 @@
     <script src="js/myParticles.js"></script>
 
     <!-- Custom scripts -->
-    <script src="js/portfolioList.js"></script>
     <script src="js/my.js"></script>
 
 

@@ -3,8 +3,26 @@
 $(document).ready(function(){
   var tileTemplateScript = $("#portfolio-tile").html();
   var tileTemplate = Handlebars.compile(tileTemplateScript);
-  console.log(tileTemplate);
   populatePortfolioAll(portfolio, tileTemplate);
+  $("#portfolio-box").animate({opacity: 1}, 1000);
+  $("#all-button").addClass("active").removeClass("inactive");
+
+  $(document).on('click', '.inactive', function(){
+    var $this = $(this);
+    $("#portfolio-box").animate({opacity: 0}, 500, function(){
+      $(".active").addClass("inactive").toggleClass("active");
+      $this.toggleClass("inactive").toggleClass("active");
+      var selectedCat = $this.attr("data");
+      clearPortfolio();
+      if (selectedCat == "all") {
+        populatePortfolioAll(portfolio, tileTemplate)
+      } else {
+        populatePortfolio(portfolio, selectedCat, tileTemplate);
+      }
+      $("#portfolio-box").animate({opacity: 1}, 500);
+    });
+
+  });
 });
 
 
@@ -30,7 +48,7 @@ function populatePortfolioAll(portfolio, template){
 }
 
 function clearPortfolio(){
-  $("#portfolio-box").html("");
+  $("#portfolio-box").empty();
 }
 
 var portfolio = [
@@ -43,18 +61,26 @@ var portfolio = [
     description: "The Cloud Elements ROI Calculator is used to estimate the time a company could save by building API integrations with Cloud Elements. Originally, the ROI Calculator was just a spreadsheet, with no styling, and only the Cloud Elements sales team knew how to navigate it. My challenge was to convert the existing spreadsheet into a web app with a user friendly interface that prospects could play with, without the guidance of a sales rep.",
     images:[],
     externalLink: "http://v-ravishankar23.github.io/ce-roi-calc/",
-    externalLinkTitle: "Check Out the ROI Calculator"
+    externalLinkTitle: "Check Out the ROI Calculator",
+    date: {
+      month: "",
+      year: "",
+    }
   },
   {
     id: "codepen",
     title: "CodePen Portfolio",
     type: "web",
     mainImg: "./img/codepen-bg.png",
-    link:"portfolioPages/codepen.html",
+    link:"http://codepen.io/vravishankar23/",
     description: "My CodePen account contains all my work from the FreeCodeCamp Front End Development class as well as other miscellaneous projects",
     images:[],
     externalLink: "http://codepen.io/vravishankar23/",
-    externalLinkTitle: "Visit My CodePen Profile"
+    externalLinkTitle: "Visit My CodePen Profile",
+    date: {
+      month: "",
+      year: "",
+    }
   },
   {
     id: "hub-logos",
@@ -65,7 +91,11 @@ var portfolio = [
     description: "In 2017, Cloud Elements rebranded. As part of the effort, I took over rebranding the logos for all of the Cloud Elements API Hubs",
     images:[],
     externalLink: "",
-    externalLinkTitle: ""
+    externalLinkTitle: "",
+    date: {
+      month: "",
+      year: "",
+    }
   },
   {
     id: "hub-webs",
@@ -76,7 +106,11 @@ var portfolio = [
     description: "I created the hub web graphics for Cloud Elements as replacements for existing graphics on the Cloud Elements website. The webs represent the categories of apps which Cloud Elements connects to and incorporates the Cloud Elements \"Chemistry\" theme using the hexagon pattern.",
     images:[],
     externalLink: "",
-    externalLinkTitle: ""
+    externalLinkTitle: "",
+    date: {
+      month: "",
+      year: "",
+    }
   },
   {
     id: "the-secret-to-dominating-the-network-economy",
@@ -87,7 +121,11 @@ var portfolio = [
     description: "",
     images:[],
     externalLink: "",
-    externalLinkTitle: ""
+    externalLinkTitle: "",
+    date: {
+      month: 1,
+      year: 2018,
+    }
   },
   {
     id: "eventing-and-bulk-with-cloud-elements",
@@ -98,7 +136,11 @@ var portfolio = [
     description: "",
     images:[],
     externalLink: "",
-    externalLinkTitle: ""
+    externalLinkTitle: "",
+    date: {
+      month: 10,
+      year: 2017,
+    }
   },
   {
     id: "webhooks-vs-polling-youre-better-than-this",
@@ -109,6 +151,10 @@ var portfolio = [
     description: "",
     images:[],
     externalLink: "",
-    externalLinkTitle: ""
+    externalLinkTitle: "",
+    date: {
+      month: 6,
+      year: 2017,
+    }
   },
 ];
