@@ -7,7 +7,7 @@ $(document).ready(function(){
   $("#portfolio-box").animate({opacity: 1}, 1000);
   $("#all-button").addClass("active").removeClass("inactive");
 
-  $(document).on('click', '.inactive', function(){
+  $(document).on('click touchstart', '.inactive', function(){
     var $this = $(this);
     $("#portfolio-box").animate({opacity: 0}, 500, function(){
       $(".active").addClass("inactive").toggleClass("active");
