@@ -243,6 +243,3 @@ var portfolio = [
     date: 201711
   },
 ];
-
-portfolio.sort(compare);
-console.log(portfolio);
