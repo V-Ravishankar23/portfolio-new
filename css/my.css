@@ -37,7 +37,7 @@ canvas {
 }
 
 .logo {
-  max-width: 15vw;
+  max-width: 25vw;
   padding-right: 20px;
 }
 
@@ -97,18 +97,25 @@ p.link {
 }
 
 @media screen and (min-width: 715px){
+  .logo {
+    max-width: 15vw;
+    padding-right: 20px;
+  }
   .main-nav {
     padding-left: 50px;
     padding-top: 50px;
   }
   .nav-item {
-    font-size: 2em;
+    font-size: 2.4em;
     margin: 15px 40px 15px 15px;
 
   }
   .link:after{
     height: 3px;
     margin-top: 5px;
+  }
+  .portfolio-tile-cover {
+    color: #b2b2b2;
   }
 }
 
@@ -133,7 +140,7 @@ p.link {
   max-height: 400px;
   padding: 5px;
   border-radius: 20px;
-  color: #b2b2b2;
+  color: white;
   background-color: rgba(0,0,0,0.5);
   -webkit-transition: opacity 0.3s, color 0.3s;
   -moz-transition: opacity  0.3s, color 0.3s;
