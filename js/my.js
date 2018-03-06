@@ -242,4 +242,16 @@ var portfolio = [
     externalLinkTitle: "",
     date: 201711
   },
+  {
+    id: "trupath",
+    title: "TruPath UI Design",
+    type: "web",
+    mainImg: "./img/trupath-bg.png",
+    link:"https://www.behance.net/gallery/32341237/TruPath-App-Concept",
+    description: "TruPath is a concept app for micro event sponsorship",
+    images:[],
+    externalLink: "https://www.behance.net/gallery/32341237/TruPath-App-Concept",
+    externalLinkTitle: "See TruPath",
+    date: 201508
+  },
 ];
