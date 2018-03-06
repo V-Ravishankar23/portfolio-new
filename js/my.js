@@ -1,6 +1,8 @@
 // Setup Functions
 
 $(document).ready(function(){
+
+  // Sort and generate portfolio array
   portfolio.sort(compare);
   var tileTemplateScript = $("#portfolio-tile").html();
   var tileTemplate = Handlebars.compile(tileTemplateScript);
@@ -8,6 +10,7 @@ $(document).ready(function(){
   $("#portfolio-box").animate({opacity: 1}, 1000);
   $("#all-button").addClass("active").removeClass("inactive");
 
+  // Toggling for active main nav item
   $(document).on('click touchstart', '.inactive', function(){
     var $this = $(this);
     $("#portfolio-box").animate({opacity: 0}, 500, function(){
@@ -21,8 +24,19 @@ $(document).ready(function(){
         populatePortfolio(portfolio, selectedCat, tileTemplate);
       }
       $("#portfolio-box").animate({opacity: 1}, 500);
-    });
 
+      $(".portfolio-tile").css('background-size', '100%'); // reset tile zoom
+    });
+  });
+
+
+  // Animate tile background images on hover
+  $(".portfolio-tile").css('background-size', '100%');
+  $(document).on('mouseenter', ".portfolio-tile",function(){
+    $(this).animate({backgroundSize: '110%'},500);
+  });
+  $(document).on('mouseleave', ".portfolio-tile",function(){
+    $(this).animate({backgroundSize: '100%'},500);
   });
 });
 
@@ -37,7 +51,7 @@ function compare(a,b) {
 
 function populatePortfolio(portfolioArr, category, template){
   var publishThese = $.grep(portfolioArr, function(n,i) {
-    return n.type == category;
+    return n.type.indexOf(category) > -1;
   });
   publishThese = publishThese.sort(compare);
   for (let i = 0; i < publishThese.length; i++) {
@@ -65,7 +79,7 @@ var portfolio = [
   {
     id: "roi-calc",
     title: "Cloud Elements ROI Calculator",
-    type: "web",
+    type: ["web"],
     mainImg: "./img/roi-calc-bg.png",
     link:"https://v-ravishankar23.github.io/ce-roi-calc/",
     description: "The Cloud Elements ROI Calculator is used to estimate the time a company could save by building API integrations with Cloud Elements. Originally, the ROI Calculator was just a spreadsheet, with no styling, and only the Cloud Elements sales team knew how to navigate it. My challenge was to convert the existing spreadsheet into a web app with a user friendly interface that prospects could play with, without the guidance of a sales rep.",
@@ -77,7 +91,7 @@ var portfolio = [
   {
     id: "codepen",
     title: "CodePen Portfolio",
-    type: "web",
+    type: ["web"],
     mainImg: "./img/codepen-bg.png",
     link:"http://codepen.io/vravishankar23/",
     description: "My CodePen account contains all my work from the FreeCodeCamp Front End Development class as well as other miscellaneous projects",
@@ -88,8 +102,8 @@ var portfolio = [
   },
   {
     id: "hub-logos",
-    title: "Cloud Elements Hub Logos",
-    type: "graphic",
+    title: "Hub Logos",
+    type: ["graphic"],
     mainImg: "./img/hub-logos-bg.png",
     link:"https://www.behance.net/gallery/62168697/Cloud-Elements-Hub-Logos",
     description: "In 2017, Cloud Elements rebranded. As part of the effort, I took over rebranding the logos for all of the Cloud Elements API Hubs",
@@ -100,8 +114,8 @@ var portfolio = [
   },
   {
     id: "hub-webs",
-    title: "Cloud Elements Hub Webs",
-    type: "graphic",
+    title: "Hub Webs",
+    type: ["graphic"],
     mainImg: "./img/hub-webs-bg.png",
     link:"https://www.behance.net/gallery/62168923/Cloud-Elements-Hub-Webs",
     description: "I created the hub web graphics for Cloud Elements as replacements for existing graphics on the Cloud Elements website. The webs represent the categories of apps which Cloud Elements connects to and incorporates the Cloud Elements \"Chemistry\" theme using the hexagon pattern.",
@@ -113,7 +127,7 @@ var portfolio = [
   {
     id: "the-secret-to-dominating-the-network-economy",
     title: "The Secret to Dominating the Network Economy",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/4-superheroes-bg.png",
     link:"https://dzone.com/articles/the-secret-to-dominating-the-network-economy",
     description: "",
@@ -125,7 +139,7 @@ var portfolio = [
   {
     id: "eventing-and-bulk-with-cloud-elements",
     title: "Eventing and Bulk with Cloud Elements",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/eventing-and-bulk-bg.png",
     link:"https://dzone.com/articles/eventing-and-bulk-with-cloud-elements",
     description: "",
@@ -137,7 +151,7 @@ var portfolio = [
   {
     id: "webhooks-vs-polling-youre-better-than-this",
     title: "Webhooks vs Polling - You're better than this",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/webhooks-vs-polling-bg.png",
     link:"https://dzone.com/articles/webhooks-vs-polling-youre-better-than-this-1",
     description: "",
@@ -149,7 +163,7 @@ var portfolio = [
   {
     id: "cloud-elements-is-soc-2-compliant",
     title: "Cloud Elements is SOC 2 Compliant!",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/soc-2-compliant-bg.png",
     link:"https://blog.cloud-elements.com/cloud-elements-is-soc-2-compliant",
     description: "",
@@ -161,7 +175,7 @@ var portfolio = [
   {
     id: "fuze-testimonial",
     title: "How Cloud Elements Saved Fuze Months of Development Time",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/fuse-testimonial-bg.png",
     link:"https://blog.cloud-elements.com/fuze-customer-testimonial",
     description: "",
@@ -173,7 +187,7 @@ var portfolio = [
   {
     id: "fieldaware-testimonial",
     title: "FieldAware Innovates Digital Field Service Management",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/fieldaware-testimonial-bg.png",
     link:"https://blog.cloud-elements.com/fieldaware-innovates-digital-field-service-management-powered-by-cloud-elements-integrations",
     description: "",
@@ -185,7 +199,7 @@ var portfolio = [
   {
     id: "influitive-testimonial",
     title: "Influitive Video Testimonial",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/influitive-testimonial-bg.png",
     link:"https://blog.cloud-elements.com/influitive-testimonial-video",
     description: "",
@@ -197,7 +211,7 @@ var portfolio = [
   {
     id: "campaign-monitor-api",
     title: "Get Your Campaign Monitor Integration to Market Faster with Cloud Elements",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/campaign-monitor-api-bg.png",
     link:"https://blog.cloud-elements.com/campaign-monitor",
     description: "",
@@ -209,7 +223,7 @@ var portfolio = [
   {
     id: "sage-crm-api",
     title: "Use Cloud Elements to Integrate the Sage CRM API",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/sage-crm-api-bg.png",
     link:"https://blog.cloud-elements.com/sage-crm-element-annoucement",
     description: "",
@@ -221,7 +235,7 @@ var portfolio = [
   {
     id: "instagram-cheat-sheet",
     title: "Instagram API Cheat Sheet",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/instagram-cheat-sheet-bg.png",
     link:"./pdfs/instagram-cheat-sheet.pdf",
     description: "",
@@ -233,7 +247,7 @@ var portfolio = [
   {
     id: "eloqua-cheat-sheet",
     title: "Eloqua API Cheat Sheet",
-    type: "writing",
+    type: ["writing"],
     mainImg: "./img/eloqua-cheat-sheet-bg.png",
     link:"./pdfs/eloqua-cheat-sheet.pdf",
     description: "",
@@ -245,7 +259,7 @@ var portfolio = [
   {
     id: "trupath",
     title: "TruPath UI Design",
-    type: "web",
+    type: ["web","graphic"],
     mainImg: "./img/trupath-bg.png",
     link:"https://www.behance.net/gallery/32341237/TruPath-App-Concept",
     description: "TruPath is a concept app for micro event sponsorship",
