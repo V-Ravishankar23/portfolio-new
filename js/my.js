@@ -65,8 +65,9 @@ function populatePortfolio(portfolioArr, category, template){
 }
 
 function populatePortfolioAll(portfolio, template){
-  var publishThese = portfolioArr;
+  var publishThese = portfolio;
   publishThese = publishThese.sort(compare);
+  console.log(publishThese);
   for (let i = 0; i < publishThese.length; i++) {
     var thisData = {};
     thisData.id = publishThese[i].id;
