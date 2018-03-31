@@ -48,21 +48,10 @@ function compare(a,b) {
   return 0;
 }
 
-function removeDuplicates(arr){
-  let unique_array = []
-  for(let i = 0;i < arr.length; i++){
-    if(unique_array.indexOf(arr[i]) == -1){
-      unique_array.push(arr[i])
-    }
-  }
-  return unique_array
-}
-
 function populatePortfolio(portfolioArr, category, template){
   var publishThese = $.grep(portfolioArr, function(n,i) {
     return n.type.indexOf(category) > -1;
   });
-  publishThese = removeDuplicates(publishThese);
   publishThese = publishThese.sort(compare);
   for (let i = 0; i < publishThese.length; i++) {
     var thisData = {};
@@ -76,9 +65,17 @@ function populatePortfolio(portfolioArr, category, template){
 }
 
 function populatePortfolioAll(portfolio, template){
-  populatePortfolio(portfolio, 'web',template);
-  populatePortfolio(portfolio, 'graphic', template);
-  populatePortfolio(portfolio, 'writing', template);
+  var publishThese = portfolioArr;
+  publishThese = publishThese.sort(compare);
+  for (let i = 0; i < publishThese.length; i++) {
+    var thisData = {};
+    thisData.id = publishThese[i].id;
+    thisData.mainImg = publishThese[i].mainImg;
+    thisData.title = publishThese[i].title;
+    thisData.link = publishThese[i].link;
+
+    $("#portfolio-box").append(template(thisData));
+  }
 }
 
 function clearPortfolio(){
