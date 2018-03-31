@@ -276,4 +276,16 @@ var portfolio = [
     externalLinkTitle: "See TruPath",
     date: 201508
   },
+  {
+    id: "plaid-element-annoucement",
+    title: "Plaid API",
+    type: ["writing"],
+    mainImg: "./img/plaid-api-bg.png",
+    link:"https://blog.cloud-elements.com/plaid-element-annoucement",
+    description: "Element annoucement blog for the Plaid API",
+    images:[],
+    externalLink: "https://blog.cloud-elements.com/plaid-element-annoucement",
+    externalLinkTitle: "Visit the blog",
+    date: 201803
+  },
 ];
