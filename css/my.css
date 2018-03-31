@@ -159,3 +159,7 @@ a:hover {
 .tile-title {
   margin-bottom: 20px;
 }
+
+.disable-true {
+  cursor: pointer;
+}

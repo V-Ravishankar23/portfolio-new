@@ -26,6 +26,9 @@ $(document).ready(function(){
       $("#portfolio-box").animate({opacity: 1}, 500);
 
       $(".portfolio-tile").css('background-size', '100%'); // reset tile zoom
+
+      // re-bind swipebox
+      //$( '.swipebox' ).swipebox();
     });
   });
 
@@ -58,30 +61,70 @@ function populatePortfolio(portfolioArr, category, template){
     thisData.id = publishThese[i].id;
     thisData.mainImg = publishThese[i].mainImg;
     thisData.title = publishThese[i].title;
-    thisData.link = publishThese[i].link;
+    if (publishThese[i].type.indexOf('graphic') > -1){
+      thisData.typeGraphic = "graphic-tile";
+      thisData.disableOption = "disable-true";
+    }
+    else {
+      thisData.typeGraphic = "";
+      thisData.link = publishThese[i].link;
+      thisData.disableOption = "disable-false";
+    }
 
     $("#portfolio-box").append(template(thisData));
+    setTimeout(function(){
+      $('.disable-true').removeAttr('href');
+    });
   }
 }
 
 function populatePortfolioAll(portfolio, template){
   var publishThese = portfolio;
   publishThese = publishThese.sort(compare);
-  console.log(publishThese);
   for (let i = 0; i < publishThese.length; i++) {
     var thisData = {};
     thisData.id = publishThese[i].id;
     thisData.mainImg = publishThese[i].mainImg;
     thisData.title = publishThese[i].title;
-    thisData.link = publishThese[i].link;
+    if (publishThese[i].type.indexOf('graphic') > -1){
+      thisData.typeGraphic = "graphic-tile";
+      thisData.disableOption = "disable-true";
+    }
+    else {
+      thisData.typeGraphic = "";
+      thisData.link = publishThese[i].link;
+      thisData.disableOption = "disable-false";
+    }
 
     $("#portfolio-box").append(template(thisData));
+    setTimeout(function(){
+      $('.disable-true').removeAttr('href');
+    });
   }
 }
 
 function clearPortfolio(){
   $("#portfolio-box").empty();
 }
+
+$(document).on('click','.graphic-tile',function(e){
+  e.preventDefault();
+  var $this = $(this);
+  var thisId = $this.attr('id');
+  var imgArr = $.grep(portfolio,function(n,i){
+    return n.id == thisId;
+  })[0].images;
+  console.log(imgArr);
+  var swipeboxArr = [];
+  for (let i = 0; i < imgArr.length; i++) {
+    var imgObj = {
+      href: imgArr[i],
+      title: "",
+    }
+    swipeboxArr.push(imgObj);
+  }
+  $.swipebox(swipeboxArr);
+});
 
 var portfolio = [
   {
@@ -94,19 +137,7 @@ var portfolio = [
     images:[],
     externalLink: "http://v-ravishankar23.github.io/ce-roi-calc/",
     externalLinkTitle: "Check Out the ROI Calculator",
-    date: 1000000
-  },
-  {
-    id: "codepen",
-    title: "CodePen Portfolio",
-    type: ["web"],
-    mainImg: "./img/codepen-bg.png",
-    link:"http://codepen.io/vravishankar23/",
-    description: "My CodePen account contains all my work from the FreeCodeCamp Front End Development class as well as other miscellaneous projects",
-    images:[],
-    externalLink: "http://codepen.io/vravishankar23/",
-    externalLinkTitle: "Visit My CodePen Profile",
-    date: 1000000
+    date: 201708
   },
   {
     id: "hub-logos",
@@ -115,7 +146,7 @@ var portfolio = [
     mainImg: "./img/hub-logos-bg.png",
     link:"https://www.behance.net/gallery/62168697/Cloud-Elements-Hub-Logos",
     description: "In 2017, Cloud Elements rebranded. As part of the effort, I took over rebranding the logos for all of the Cloud Elements API Hubs",
-    images:[],
+    images:['./img/hub-logos/my-hub.png','./img/hub-logos/billing.png','./img/hub-logos/cloud-storage.png','./img/hub-logos/sage.png','./img/hub-logos/collaboration.png','./img/hub-logos/conferencing.png','./img/hub-logos/erp.png','./img/hub-logos/crm.png','./img/hub-logos/database.png','./img/hub-logos/ecommerce.png','./img/hub-logos/expenses.png','./img/hub-logos/field-service.png','./img/hub-logos/finance.png','./img/hub-logos/help-desk.png','./img/hub-logos/human-capital.png','./img/hub-logos/identity-mgmt.png','./img/hub-logos/infrastructure.png','./img/hub-logos/iot.png','./img/hub-logos/learning-mgmt.png','./img/hub-logos/marketing.png','./img/hub-logos/messaging.png','./img/hub-logos/payments.png','./img/hub-logos/payroll.png','./img/hub-logos/project-mgmt.png','./img/hub-logos/quoting.png','./img/hub-logos/social.png',],
     externalLink: "",
     externalLinkTitle: "",
     date: 201706
@@ -127,7 +158,7 @@ var portfolio = [
     mainImg: "./img/hub-webs-bg.png",
     link:"https://www.behance.net/gallery/62168923/Cloud-Elements-Hub-Webs",
     description: "I created the hub web graphics for Cloud Elements as replacements for existing graphics on the Cloud Elements website. The webs represent the categories of apps which Cloud Elements connects to and incorporates the Cloud Elements \"Chemistry\" theme using the hexagon pattern.",
-    images:[],
+    images:['./img/hub-webs/cloud-storage-hub-web.png','./img/hub-webs/crm-hub-web.png','./img/hub-webs/ecommerce-hub-web.png','./img/hub-webs/finance-hub-web.png','./img/hub-webs/help-desk-hub-web.png','./img/hub-webs/marketing-hub-web.png','./img/hub-webs/messaging-hub-web.png','./img/hub-webs/payments-hub-web.png','./img/hub-webs/social-hub-web.png',],
     externalLink: "",
     externalLinkTitle: "",
     date: 201707
@@ -271,7 +302,7 @@ var portfolio = [
     mainImg: "./img/trupath-bg.png",
     link:"https://www.behance.net/gallery/32341237/TruPath-App-Concept",
     description: "TruPath is a concept app for micro event sponsorship",
-    images:[],
+    images:["./img/trupath/trupath-title.png","./img/trupath/home-screen.png","./img/trupath/my-path.png","./img/trupath/on-wheels.png",],
     externalLink: "https://www.behance.net/gallery/32341237/TruPath-App-Concept",
     externalLinkTitle: "See TruPath",
     date: 201508

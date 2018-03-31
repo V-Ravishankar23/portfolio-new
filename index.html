@@ -26,6 +26,9 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Swipebox CSS -->
+    <link href="vendor/swipebox/css/swipebox.min.css" rel="stylesheet">
+
     <!-- Custom fonts for this template -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -73,8 +76,8 @@
       <div id="portfolio-box" class="d-flex flex-wrap justify-content-center">
         <script id="portfolio-tile" type="text/x-handlebars-template">
 
-          <div id={{id}} class="portfolio-tile text-center d-flex flex-column align-items-center justify-content-center" style="background: url('{{mainImg}}') no-repeat center center local;">
-            <a href="{{link}}" target="_blank">
+          <div id={{id}} class="portfolio-tile text-center d-flex flex-column align-items-center justify-content-center {{typeGraphic}}" style="background: url('{{mainImg}}') no-repeat center center local;">
+            <a class="{{disableOption}}" href="{{link}}" target="_blank">
               <div class="portfolio-tile-cover d-flex align-items-center justify-content-center">
                 <div class="tile-text-wrapper">
                   <h4 class="tile-title">{{title}}</h4>
@@ -100,6 +103,7 @@
     <script src="vendor/handlebars/handlebars.js"></script>
     <script src="vendor/particles/particles.min.js"></script>
     <script src="js/myParticles.js"></script>
+    <script src="vendor/swipebox/js/jquery.swipebox.min.js"></script>
 
     <!-- Custom scripts -->
     <script src="js/my.js"></script>
