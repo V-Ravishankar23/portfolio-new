@@ -319,4 +319,16 @@ var portfolio = [
     externalLinkTitle: "Visit the blog",
     date: 201803
   },
+  {
+    id: "ce-product-dictionary",
+    title: "CE Product Dictionary",
+    type: ["writing"],
+    mainImg: "./img/roi-calc-bg.png",
+    link:"./pdfs/ce-product-dictionary.pdf",
+    description: "Cloud Elements product dictionary",
+    images:[],
+    externalLink: "./pdfs/ce-product-dictionary.pdf",
+    externalLinkTitle: "Visit the blog",
+    date: 201702
+  },
 ];
